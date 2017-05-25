@@ -17,7 +17,6 @@ class Donors(TimeModel, models.Model):
     02 | Carrossel |
     """
     name = models.CharField('Nome', max_length=100)
-    slug = models.SlugField('Identificador', max_length=100)
 
     def __str__(self):
         return str(self.name)
@@ -28,7 +27,7 @@ class Donors(TimeModel, models.Model):
         verbose_name_plural = 'Doadores'
 
     def get_absolute_url(self):
-        return reverse('donations:index', kwargs={'slug': self.slug})
+        return reverse('donations:index', kwargs={'name': self.name})
 
 
 class Products(TimeModel, models.Model):
@@ -38,7 +37,6 @@ class Products(TimeModel, models.Model):
     02 | Pacote Sulfite  | Para ONG    |
     """
     name = models.CharField('Nome', max_length=100)
-    slug = models.SlugField('Identificador', max_length=100)
     description = models.TextField('Descrição', blank=True)
 
     def __str__(self):
@@ -50,7 +48,7 @@ class Products(TimeModel, models.Model):
         verbose_name_plural = 'Produtos'
 
     def get_absolute_url(self):
-        return reverse('donations:index', kwargs={'slug': self.slug})
+        return reverse('donations:index', kwargs={'name': self.name})
 
 
 class Donations(TimeModel, models.Model):
@@ -60,7 +58,6 @@ class Donations(TimeModel, models.Model):
     02 | Agasalho | Doação      | ONG JDB   | 1/2/3 | 20       |
     """
     name = models.ForeignKey(Products, verbose_name='Nome')
-    slug = models.SlugField('Identificador', max_length=100)
     service_type = models.CharField(max_length=12, choices=C_TYPE,
                                     default='Recebimento')
     donor = models.ForeignKey(Donors, verbose_name='Doador')
@@ -76,7 +73,7 @@ class Donations(TimeModel, models.Model):
         verbose_name_plural = 'Doações'
 
     def get_absolute_url(self):
-        return reverse('donations:index', kwargs={'slug': self.slug})
+        return reverse('donations:index', kwargs={'name': self.name})
 
 
 class Expenses(TimeModel, models.Model):
@@ -85,7 +82,6 @@ class Expenses(TimeModel, models.Model):
     01 | Tshirt | Compra | Tshirts to ONG | 1/2/3 | 20       | 30    | 600
     """
     name = models.ForeignKey(Products, verbose_name='Serviço')
-    slug = models.SlugField('Identificador', max_length=100)
     service_type = models.CharField(max_length=12, choices=C_TYPE)
     description = models.TextField('Descrição', blank=True)
     date = models.DateTimeField('Data', auto_now_add=True)
@@ -105,4 +101,4 @@ class Expenses(TimeModel, models.Model):
         verbose_name_plural = 'Despesas'
 
     def get_absolute_url(self):
-        return reverse('donations:index', kwargs={'slug': self.slug})
+        return reverse('donations:index', kwargs={'name': self.name})
