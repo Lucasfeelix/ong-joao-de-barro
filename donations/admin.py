@@ -4,13 +4,13 @@ from donations.models import Donations, Donors, Expenses, Products
 
 class DonorsAdmin(admin.ModelAdmin):
     list_display = ['name']
-    search_fields = ('name__name',)
+    search_fields = ('name',)
     list_filter = ['name', 'created_at']
 
 
 class ProductsAdmin(admin.ModelAdmin):
     list_display = ['name', 'description']
-    search_fields = ('name__name', 'description',)
+    search_fields = ('name', 'description',)
     list_filter = ['name', 'created_at']
 
 

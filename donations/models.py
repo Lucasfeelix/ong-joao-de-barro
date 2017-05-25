@@ -7,7 +7,7 @@ C_TYPE = ((u'A', u'Aluguel'),
           (u'O', u'Doação'),
           (u'E', u'Extorno'),
           (u'R', u'Recebimento'),
-          (u'T', u'Troca'))
+          (u'P', u'Pagamento'))
 
 
 class Donors(TimeModel, models.Model):
@@ -58,8 +58,8 @@ class Donations(TimeModel, models.Model):
     02 | Agasalho | Doação      | ONG JDB   | 1/2/3 | 20       |
     """
     name = models.ForeignKey(Products, verbose_name='Nome')
-    service_type = models.CharField(max_length=12, choices=C_TYPE,
-                                    default='Recebimento')
+    service_type = models.CharField('Tipo de serviço', max_length=12,
+                                    choices=C_TYPE, default='R')
     donor = models.ForeignKey(Donors, verbose_name='Doador')
     date = models.DateTimeField('Data', auto_now_add=True)
     quantity = models.PositiveSmallIntegerField('Quantidade', default=0)
@@ -82,7 +82,8 @@ class Expenses(TimeModel, models.Model):
     01 | Tshirt | Compra | Tshirts to ONG | 1/2/3 | 20       | 30    | 600
     """
     name = models.ForeignKey(Products, verbose_name='Serviço')
-    service_type = models.CharField(max_length=12, choices=C_TYPE)
+    service_type = models.CharField('Tipo de serviço', max_length=12,
+                                    choices=C_TYPE, default='C')
     description = models.TextField('Descrição', blank=True)
     date = models.DateTimeField('Data', auto_now_add=True)
     quantity = models.IntegerField('Quantidade')
