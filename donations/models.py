@@ -10,7 +10,7 @@ C_TYPE = ((u'A', u'Aluguel'),
           (u'P', u'Pagamento'))
 
 
-class Donors(TimeModel, models.Model):
+class Donors(TimeModel):
     """
     ID | Name      |
     01 | João      |
@@ -30,7 +30,7 @@ class Donors(TimeModel, models.Model):
         return reverse('donations:index', kwargs={'name': self.name})
 
 
-class Products(TimeModel, models.Model):
+class Products(TimeModel):
     """
     ID | Name            | Description |
     01 | Camiseta        | Tamanho P   |
@@ -51,7 +51,7 @@ class Products(TimeModel, models.Model):
         return reverse('donations:index', kwargs={'name': self.name})
 
 
-class Donations(TimeModel, models.Model):
+class Donations(TimeModel):
     """
     ID | Name     | Item_type   | Donor     | Date  | Quantity |
     01 | Camiseta | Recebimento | Carrossel | 1/2/3 | 10       |
@@ -76,7 +76,7 @@ class Donations(TimeModel, models.Model):
         return reverse('donations:index', kwargs={'name': self.name})
 
 
-class Expenses(TimeModel, models.Model):
+class Expenses(TimeModel):
     """
     ID | Name   | Type   | Description    | Date  | Quantity | Price | Total
     01 | Tshirt | Compra | Tshirts to ONG | 1/2/3 | 20       | 30    | 600
