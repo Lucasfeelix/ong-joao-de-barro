@@ -1,5 +1,5 @@
 from django.contrib import admin
-from donations.models import Donations, Donors, Expenses, Products
+from donations.models import Donations, Donors, Expenses, Products, Items
 
 
 class DonorsAdmin(admin.ModelAdmin):
@@ -21,9 +21,14 @@ class DonationsAdmin(admin.ModelAdmin):
     list_filter = ['service_type', 'created_at']
 
 
+class ItemsInline(admin.TabularInline):
+    model = Items
+    extra = 1
+
+
 class ExpensesAdmin(admin.ModelAdmin):
-    list_display = ['name', 'service_type', 'date', 'quantity', 'price',
-                    'total']
+    inlines = [ItemsInline]
+    list_display = ['name', 'service_type', 'date']
     search_fields = ('name__name', 'service_type',)
     list_filter = ['service_type', 'created_at']
 
