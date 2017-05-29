@@ -2,15 +2,6 @@
 
 ## Baixando e executando o projeto
 
-Baixe e rode o `setup.sh`.
-
-```
-wget https://raw.githubusercontent.com/rg3915/orcamentos/master/setup.sh
-source setup.sh
-```
-
-Ou siga o passo a passo.
-
 ### 0 - Clone o repositório
 > git clone https://github.com/Lucasfeelix/ong-joao-de-barro.git
 
