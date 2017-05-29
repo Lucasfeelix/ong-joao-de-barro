@@ -17,5 +17,5 @@
 ### 4 - Execute o servidor
 > python3 manage.py runserver
 
-### 5 - Acesse a API browseavel
+### 5 - Acesse a url
 > http://localhost:8000/
