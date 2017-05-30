@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="pt">
 <head>
     <meta charset="utf-8">
@@ -7,11 +8,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{% block title %} Dashboard {% endblock title %}</title>
+  	<title>{% block title %} Dashboard {% endblock %}</title>
 
-    <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap Core CSS -->
-    <link href="static/distt/css/sb-admin-2.css" rel="stylesheet"> <!-- Custom CSS -->
-    <link href="static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> <!-- Custom Fonts -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> <!-- Bootstrap Core CSS -->
+    <link href="{% static 'distt/css/sb-admin-2.css' %}" rel="stylesheet"> <!-- Custom CSS -->
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css"> <!-- Custom Fonts -->
 </head>
 
 <body>
@@ -56,35 +57,11 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard </a></li>
-                        <li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Usuários <span class="fa arrow"></span></a>
+                        <li><a href="{% url 'index' %}"><i class="fa fa-dashboard fa-fw"></i> Dashboard </a></li>
+
+                        <li><a href="#"><i class="fa fa-gratipay"></i> Doações <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li><a href="#">Alunos</a></li>
-                                <li><a href="#">Professores</a></li>
-                                <li><a href="#">Voluntários</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Turmas <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><a href="#">Inglês</a></li>
-                                <li><a href="#">Espanhol</a></li>
-                                <li><a href="#">Japônes</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administrativo <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><a href="#">Mensalidades</a></li>
-                                <li><a href="#">Matriculas</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Doações <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><a href="#">Item</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Despesas <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><a href="#">Item</a></li>
+                                <li><a href="{% url 'donations:donation' %}"> Lista de doações </a></li>
                             </ul>
                         </li>
 
@@ -105,10 +82,10 @@
         </div>
     </div>
 
-    <script src="static/jquery/jquery.min.js"></script> <!-- jQuery -->
-    <script src="static/bootstrap/js/bootstrap.min.js"></script> <!-- Bootstrap Core JavaScript -->
-    <script src="static/metisMenu/metisMenu.min.js"></script> <!-- Metis Menu Plugin JavaScript -->
-    <script src="static/distt/js/sb-admin-2.js"></script> <!-- Custom Theme JavaScript -->
+    <script src="{% static 'jquery/jquery.min.js' %}"></script> <!-- jQuery -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script> <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'metisMenu/metisMenu.min.js' %}"></script> <!-- Metis Menu Plugin JavaScript -->
+    <script src="{% static 'distt/js/sb-admin-2.js' %}"></script> <!-- Custom Theme JavaScript -->
 
 </body>
 

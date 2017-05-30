@@ -19,5 +19,6 @@ from core import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'doacoes/', include('donations.urls', namespace='donations')),
     url(r'^admin/', admin.site.urls),
 ]
