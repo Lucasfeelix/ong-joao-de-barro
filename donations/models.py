@@ -1,13 +1,13 @@
 from django.db import models
 from core.models import TimeModel
 
-C_TYPE = ((u'A', u'Aluguel'),
-          (u'C', u'Compra'),
-          (u'D', u'Devolução'),
-          (u'O', u'Doação'),
-          (u'E', u'Extorno'),
-          (u'R', u'Recebimento'),
-          (u'P', u'Pagamento'))
+C_TYPE = ((u'Aluguel', u'Aluguel'),
+          (u'Compra', u'Compra'),
+          (u'Devolução', u'Devolução'),
+          (u'Doação', u'Doação'),
+          (u'Extorno', u'Extorno'),
+          (u'Recebimento', u'Recebimento'),
+          (u'Pagamento', u'Pagamento'))
 
 
 class Donors(TimeModel):
@@ -25,9 +25,6 @@ class Donors(TimeModel):
         ordering = ['name']
         verbose_name = 'Doador'
         verbose_name_plural = 'Doadores'
-
-    def get_absolute_url(self):
-        return reverse('donations:index', kwargs={'name': self.name})
 
 
 class Products(TimeModel):
@@ -47,9 +44,6 @@ class Products(TimeModel):
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'
 
-    def get_absolute_url(self):
-        return reverse('donations:index', kwargs={'name': self.name})
-
 
 class Donations(TimeModel):
     """
@@ -59,7 +53,7 @@ class Donations(TimeModel):
     """
     name = models.ForeignKey(Products, verbose_name='Nome')
     service_type = models.CharField('Tipo de serviço', max_length=12,
-                                    choices=C_TYPE, default='R')
+                                    choices=C_TYPE, default='Recebimento')
     donor = models.ForeignKey(Donors, verbose_name='Doador')
     date = models.DateTimeField('Data', auto_now_add=True)
     quantity = models.PositiveSmallIntegerField('Quantidade', default=0)
@@ -72,9 +66,6 @@ class Donations(TimeModel):
         verbose_name = 'Doação'
         verbose_name_plural = 'Doações'
 
-    def get_absolute_url(self):
-        return reverse('donations:index', kwargs={'name': self.name})
-
 
 class Expenses(TimeModel):
     """
@@ -83,7 +74,7 @@ class Expenses(TimeModel):
     """
     name = models.ForeignKey(Products, verbose_name='Serviço')
     service_type = models.CharField('Tipo de serviço', max_length=12,
-                                    choices=C_TYPE, default='C')
+                                    choices=C_TYPE, default='Compra')
     description = models.TextField('Descrição', blank=True)
     date = models.DateTimeField('Data', auto_now_add=True)
 
@@ -94,9 +85,6 @@ class Expenses(TimeModel):
         ordering = ['name']
         verbose_name = 'Despesa'
         verbose_name_plural = 'Despesas'
-
-    def get_absolute_url(self):
-        return reverse('donations:index', kwargs={'name': self.name})
 
 
 class Items(models.Model):
