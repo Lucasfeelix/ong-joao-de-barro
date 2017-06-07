@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, CreateView, UpdateView
+from django.views.generic import DetailView
 from django.core.urlresolvers import reverse_lazy
 from donations.models import Donations
 from donations.form import DonationsAddForm
@@ -16,12 +17,17 @@ class DonationsListView(ListView):
     paginate_by = 10
 
 
+# class DonationsCreateView(CreateView):
+#     model = Donations
+#     form_class = DonationsAddForm
+#     success_url = reverse_lazy('donations:donation')
+#     template_name = 'donations/donations_add.html'
+#     context_object_name = 'donations'
+
+
 class DonationsCreateView(CreateView):
     model = Donations
-    form_class = DonationsAddForm
-    success_url = reverse_lazy('donations:donation')
-    template_name = 'donations/donations_add.html'
-    context_object_name = 'donations'
+    fields = ['name', 'slug', 'service_type', 'donor', 'quantity']
 
 
 class DonationsUpdateView(UpdateView):
@@ -34,7 +40,16 @@ class DonationsUpdateView(UpdateView):
         return self.object.all()
 
 
+# def donation_detail(request, slug):
+#     donation = Donations.objects.get(slug=slug)
+#     context = {
+#         'donations': donations
+#     }
+#     return render(request, 'donations/donations-detail.html', context)
+
+
 index = IndexView.as_view()
 donations = DonationsListView.as_view()
 donations_add = DonationsCreateView.as_view()
 donations_update = DonationsUpdateView.as_view()
+donations_detail = DetailView.as_view(model=Donations)
