@@ -17,17 +17,12 @@ class DonationsListView(ListView):
     paginate_by = 10
 
 
-# class DonationsCreateView(CreateView):
-#     model = Donations
-#     form_class = DonationsAddForm
-#     success_url = reverse_lazy('donations:donation')
-#     template_name = 'donations/donations_add.html'
-#     context_object_name = 'donations'
-
-
 class DonationsCreateView(CreateView):
     model = Donations
-    fields = ['name', 'slug', 'service_type', 'donor', 'quantity']
+    form_class = DonationsAddForm
+    success_url = reverse_lazy('donations:donation')
+    template_name = 'donations/donations_add.html'
+    context_object_name = 'donations'
 
 
 class DonationsUpdateView(UpdateView):

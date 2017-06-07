@@ -14,7 +14,6 @@ C_TYPE = ((u'Aluguel', u'Aluguel'),
 
 class Donors(TimeModel):
     name = models.CharField('Nome', max_length=100)
-    slug = models.SlugField('Identificador', max_length=100, blank=True)
 
     def __str__(self):
         return str(self.name)
@@ -25,12 +24,11 @@ class Donors(TimeModel):
         verbose_name_plural = 'Doadores'
 
     # def get_absolute_url(self):
-    #     return reverse('donations:donation_detail', kwargs={'slug': self.slug})
+    #     return reverse('donations:donation_detail', kwargs={'pk': self.pk})
 
 
 class Products(TimeModel):
     name = models.CharField('Nome', max_length=100)
-    slug = models.SlugField('Identificador', max_length=100, blank=True)
     description = models.TextField('Descrição', blank=True)
 
     def __str__(self):
@@ -42,12 +40,11 @@ class Products(TimeModel):
         verbose_name_plural = 'Produtos'
 
     # def get_absolute_url(self):
-    #     return reverse('donations:donation_detail', kwargs={'slug': self.slug})
+    #     return reverse('donations:donation_detail', kwargs={'pk': self.pk})
 
 
 class Donations(TimeModel):
     name = models.ForeignKey(Products, verbose_name='Nome')
-    slug = models.SlugField('Identificador', max_length=100, blank=True)
     service_type = models.CharField('Tipo de serviço', max_length=12,
                                     choices=C_TYPE, default='Recebimento')
     donor = models.ForeignKey(Donors, verbose_name='Doador')
@@ -63,12 +60,11 @@ class Donations(TimeModel):
         verbose_name_plural = 'Doações'
 
     def get_absolute_url(self):
-        return reverse('donations:donation_detail', kwargs={'slug': self.slug})
+        return reverse('donations:donation_detail', kwargs={'pk': self.pk})
 
 
 class Expenses(TimeModel):
     name = models.ForeignKey(Products, verbose_name='Serviço')
-    slug = models.SlugField('Identificador', max_length=100, blank=True)
     service_type = models.CharField('Tipo de serviço', max_length=12,
                                     choices=C_TYPE, default='Compra')
     description = models.TextField('Descrição', blank=True)
@@ -83,7 +79,7 @@ class Expenses(TimeModel):
         verbose_name_plural = 'Despesas'
 
     # def get_absolute_url(self):
-    #     return reverse('donations:donation_detail', kwargs={'slug': self.slug})
+    #     return reverse('donations:donation_detail', kwargs={'pk': self.pk})
 
 
 class Items(models.Model):
