@@ -20,9 +20,9 @@ class DonationsListView(ListView):
 class DonationsCreateView(CreateView):
     model = Donations
     form_class = DonationsAddForm
-    success_url = reverse_lazy('donations:donation')
-    template_name = 'donations/donations_add.html'
-    context_object_name = 'donations'
+    # success_url = reverse_lazy('donations:donation')
+    # template_name = 'donations/donations_add.html'
+    # context_object_name = 'donations'
 
 
 class DonationsUpdateView(UpdateView):
@@ -47,4 +47,4 @@ index = IndexView.as_view()
 donations = DonationsListView.as_view()
 donations_add = DonationsCreateView.as_view()
 donations_update = DonationsUpdateView.as_view()
-donations_detail = DetailView.as_view(model=Donations)
+donations_detail = DetailView.as_view(model=Donations, context_object_name = 'donations')

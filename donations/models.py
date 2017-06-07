@@ -27,24 +27,7 @@ class Donors(TimeModel):
     #     return reverse('donations:donation_detail', kwargs={'pk': self.pk})
 
 
-class Products(TimeModel):
-    name = models.CharField('Nome', max_length=100)
-    description = models.TextField('Descrição', blank=True)
-
-    def __str__(self):
-        return str(self.name)
-
-    class Meta:
-        ordering = ['name']
-        verbose_name = 'Produto'
-        verbose_name_plural = 'Produtos'
-
-    # def get_absolute_url(self):
-    #     return reverse('donations:donation_detail', kwargs={'pk': self.pk})
-
-
 class Donations(TimeModel):
-    name = models.ForeignKey(Products, verbose_name='Nome')
     service_type = models.CharField('Tipo de serviço', max_length=12,
                                     choices=C_TYPE, default='Recebimento')
     donor = models.ForeignKey(Donors, verbose_name='Doador')
@@ -52,10 +35,10 @@ class Donations(TimeModel):
     quantity = models.PositiveSmallIntegerField('Quantidade', default=0)
 
     def __str__(self):
-        return str(self.name)
+        return str(self.service_type)
 
     class Meta:
-        ordering = ['name']
+        ordering = ['service_type']
         verbose_name = 'Doação'
         verbose_name_plural = 'Doações'
 
@@ -64,17 +47,16 @@ class Donations(TimeModel):
 
 
 class Expenses(TimeModel):
-    name = models.ForeignKey(Products, verbose_name='Serviço')
     service_type = models.CharField('Tipo de serviço', max_length=12,
                                     choices=C_TYPE, default='Compra')
     description = models.TextField('Descrição', blank=True)
     date = models.DateTimeField('Data', auto_now_add=True)
 
     def __str__(self):
-        return str(self.name)
+        return str(self.service_type)
 
     class Meta:
-        ordering = ['name']
+        ordering = ['service_type']
         verbose_name = 'Despesa'
         verbose_name_plural = 'Despesas'
 
@@ -82,16 +64,29 @@ class Expenses(TimeModel):
     #     return reverse('donations:donation_detail', kwargs={'pk': self.pk})
 
 
-class Items(models.Model):
+class ItemsExpenses(models.Model):
     expense_id = models.ForeignKey(Expenses, verbose_name='Nome',
                                    on_delete=models.CASCADE)
     name = models.CharField(verbose_name='Nome', max_length=100)
+    description = models.TextField('Descrição', blank=True)
     quantity = models.IntegerField('Quantidade')
     price = models.DecimalField('Preço', max_digits=6, decimal_places=2)
 
     @property
     def total(self):
         return self.quantity * self.price
+
+    class Meta:
+        verbose_name = 'Item'
+        verbose_name_plural = 'Itens'
+
+
+class ItemsDonations(models.Model):
+    donation_id = models.ForeignKey(Donations, verbose_name='Nome',
+                                    on_delete=models.CASCADE)
+    name = models.CharField(verbose_name='Nome', max_length=100)
+    description = models.TextField('Descrição', blank=True)
+    quantity = models.IntegerField('Quantidade')
 
     class Meta:
         verbose_name = 'Item'

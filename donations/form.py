@@ -1,12 +1,12 @@
 # coding=utf-8
 from django import forms
-from donations.models import Donations, Donors, Expenses, Items, Products
+from donations.models import Donations, Donors, Expenses, ItemsExpenses
 
 
 class DonationsAddForm(forms.ModelForm):
     class Meta:
         model = Donations
-        fields = ['name', 'service_type', 'donor', 'quantity']
+        fields = ['service_type', 'donor', 'quantity']
         readonly_fields = ('date')
 
 
@@ -24,5 +24,5 @@ class ItemsForm(forms.ModelForm):
             attrs={'readonly': 'readonly'}), required=False)
 
     class Meta:
-        model = Items
+        model = ItemsExpenses
         exclude = []

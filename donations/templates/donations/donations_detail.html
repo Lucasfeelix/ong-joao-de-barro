@@ -4,7 +4,7 @@
 
 {% block title %} Atualizar Doação | {{ block.super}} {% endblock title %}
 
-{% block spacename %} Doação: {{object.name}} {% endblock spacename %}
+{% block spacename %} Doação: {{object.service_type}} {% endblock spacename %}
 
 {% block container %}
 <div class="container-fluid">
@@ -12,27 +12,49 @@
         <table class="table table-user-information">
             <tbody>
                 <tr>
-                  <th class="col-md-3 text-right">Nome</th>
-                  <td>{{ object.name }}</td>
-                </tr>
-                <tr>
                   <th class="col-md-3 text-right">Tipo de serviço</th>
-                  <td>{{ object.service_type }}</td>
+                  <td>{{ donations.service_type }}</td>
                 </tr>
                 <tr>
                   <th class="col-md-3 text-right">Doador</th>
-                  <td>{{ object.donor }}</td>
+                  <td>{{ donations.donor }}</td>
                 </tr>
                 <tr>
                   <th class="col-md-3 text-right">Data</th>
-                  <td>{{ object.date }}</td>
+                  <td>{{ donations.date }}</td>
                 </tr>
                 <tr>
                   <th class="col-md-3 text-right">Quantidade</th>
-                  <td>{{ object.quantity }}</td>
+                  <td>{{ donations.quantity }}</td>
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+          <hr/>
+        </div>
+        <div class="col-md-8">
+        	<table class="table table-striped">
+        		<thead>
+        			<tr>
+        				<th>Nome</th><th>Descrição</th><th>Quantidade</th>
+        			</tr>
+        		</thead>
+        		<tbody>
+              {% for item in donations.itemsdonations_set.all %}
+                  <tr>
+                      <td>{{item.name}}</a></td>
+                      <td>{{item.description}}</td>
+                      <td>{{item.quantity}}</td>
+                  </tr>
+              {% endfor %}
+        		</tbody>
+        	</table>
+        </div>
     </div>
 </div>
 {% endblock %}
