@@ -1,12 +1,13 @@
 # coding=utf-8
 from django import forms
-from donations.models import Donations, Donors, Expenses, ItemsExpenses
+from donations.models import Donations, Donors, Expenses, ItemsExpenses, C_TYPE
 
 
 class DonationsAddForm(forms.ModelForm):
     class Meta:
         model = Donations
-        fields = ['service_type', 'donor', 'quantity']
+        fields = ['service_type', 'slug', 'donor', 'item', 'description',
+                  'quantity']
         readonly_fields = ('date')
 
 

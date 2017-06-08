@@ -47,4 +47,5 @@ index = IndexView.as_view()
 donations = DonationsListView.as_view()
 donations_add = DonationsCreateView.as_view()
 donations_update = DonationsUpdateView.as_view()
-donations_detail = DetailView.as_view(model=Donations, context_object_name = 'donations')
+donations_detail = DetailView.as_view(model=Donations,
+                                      context_object_name='donations')

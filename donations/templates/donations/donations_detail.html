@@ -4,57 +4,93 @@
 
 {% block title %} Atualizar Doação | {{ block.super}} {% endblock title %}
 
-{% block spacename %} Doação: {{object.service_type}} {% endblock spacename %}
+{% block spacename %} Doação: {{object.item}} {% endblock spacename %}
 
 {% block container %}
 <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" href="#collapseOne">
+              <span class="fa fa-user"></span> Doações </a> </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <div class="row">
+                <table class="table table-user-information">
+                  <tbody>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Tipo de serviço </th>
+                      <td>{{ donations.service_type }}</td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Identificador </th>
+                      <td>{{ donations.slug }}</td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Item </th>
+                      <td>{{ donations.item }}</td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify">  Doador </th>
+                      <td>{{ donations.donor }}</td>
+                    </tr>
+                      <tr>
+                        <th class="text-justify"> Descrição </th>
+                        <td>{{ donations.description }}</td>
+                      </tr>
+                      <tr>
+                        <th class="text-justify"> Quantidade </th>
+                        <td>{{ donations.quantity }}</td>
+                      </tr>
+                      <tr>
+                        <th class="text-justify"> Data </th>
+                        <td>{{ donations.date|date }}</td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
     <div class="col-md-5">
         <table class="table table-user-information">
             <tbody>
+              <tr>
+                <th class="col-md-3 text-right"> Tipo de serviço </th>
+                <td>{{ donations.service_type }}</td>
+              </tr>
+              <tr>
+                <th class="col-md-3 text-right"> Identificador </th>
+                <td>{{ donations.slug }}</td>
+              </tr>
+              <tr>
+                <th class="col-md-3 text-right">  Doador </th>
+                <td>{{ donations.donor }}</td>
+              </tr>
                 <tr>
-                  <th class="col-md-3 text-right">Tipo de serviço</th>
-                  <td>{{ donations.service_type }}</td>
+                  <th class="col-md-3 text-right"> Descrição </th>
+                  <td>{{ donations.description }}</td>
                 </tr>
                 <tr>
-                  <th class="col-md-3 text-right">Doador</th>
-                  <td>{{ donations.donor }}</td>
-                </tr>
-                <tr>
-                  <th class="col-md-3 text-right">Data</th>
-                  <td>{{ donations.date }}</td>
-                </tr>
-                <tr>
-                  <th class="col-md-3 text-right">Quantidade</th>
+                  <th class="col-md-3 text-right"> Quantidade </th>
                   <td>{{ donations.quantity }}</td>
+                </tr>
+                <tr>
+                  <th class="col-md-3 text-right"> Data </th>
+                  <td>{{ donations.date|date }}</td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8">
-          <hr/>
-        </div>
-        <div class="col-md-8">
-        	<table class="table table-striped">
-        		<thead>
-        			<tr>
-        				<th>Nome</th><th>Descrição</th><th>Quantidade</th>
-        			</tr>
-        		</thead>
-        		<tbody>
-              {% for item in donations.itemsdonations_set.all %}
-                  <tr>
-                      <td>{{item.name}}</a></td>
-                      <td>{{item.description}}</td>
-                      <td>{{item.quantity}}</td>
-                  </tr>
-              {% endfor %}
-        		</tbody>
-        	</table>
-        </div>
-    </div>
-</div>
+-->
 {% endblock %}

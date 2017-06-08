@@ -7,41 +7,50 @@
 {% block spacename %} Adicionar {% endblock spacename %}
 
 {% block container %}
-<div class="container-fluid">
-    <div class="col-md-4">
+<div class="col-md-5 container-fluid">
         <form action="." method="POST">
         {% csrf_token %}
         <div class="row">
             <div class="col-md-12">
-                <div class="panel-group" id="accordion">
+                <div class="panel-group">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            <h4 class="panel-title"> <a data-toggle="collapse" href="#collapseOne">
                               <span class="fa fa-user"></span> Doações </a> </h4>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            {{ form.name.label }} {{ form.name }}
-                                        </div>
+                                  <div class="col-md-8">
+                                    <div class="form-group">
+                                      {{ form.service_type.label }} {{ form.service_type }}
                                     </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            {{ form.service_type.label }} {{ form.service_type }}
-                                        </div>
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="form-group">
+                                      {{ form.slug.label }} {{ form.slug }}
                                     </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            {{ form.donor.label }} {{ form.donor }}
-                                        </div>
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="form-group">
+                                      {{ form.donor.label }} {{ form.donor }}
                                     </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            {{ form.quantity.label }} {{ form.quantity }}
-                                        </div>
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="form-group">
+                                        {{ form.item.label }} {{ form.item }}
                                     </div>
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="form-group">
+                                        {{ form.description.label }} {{ form.description }}
+                                    </div>
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="form-group">
+                                        {{ form.quantity.label }} {{ form.quantity }}
+                                    </div>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +64,7 @@
             </div>
         </div>
     </form>
-    </div>
 </div>
+
 
 {% endblock %}
