@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load pagination %}
+
 {% block title %} Lista de Doações | {{ block.super}} {% endblock title %}
 
 {% block spacename %} Lista de Doações {% endblock spacename %}
@@ -53,5 +55,8 @@
         	</table>
         </div>
     </div>
+
+    {% pagination request paginator page_obj%}
+
 </div>
 {% endblock %}
