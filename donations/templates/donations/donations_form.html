@@ -7,64 +7,72 @@
 {% block spacename %} Adicionar {% endblock spacename %}
 
 {% block container %}
-<div class="col-md-5 container-fluid">
-        <form action="." method="POST">
-        {% csrf_token %}
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel-group">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title"> <a data-toggle="collapse" href="#collapseOne">
-                              <span class="fa fa-user"></span> Doações </a> </h4>
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <div class="row">
-                                  <div class="col-md-8">
-                                    <div class="form-group">
-                                      {{ form.service_type.label }} {{ form.service_type }}
-                                    </div>
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="form-group">
-                                      {{ form.slug.label }} {{ form.slug }}
-                                    </div>
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="form-group">
-                                      {{ form.donor.label }} {{ form.donor }}
-                                    </div>
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="form-group">
-                                        {{ form.item.label }} {{ form.item }}
-                                    </div>
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="form-group">
-                                        {{ form.description.label }} {{ form.description }}
-                                    </div>
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="form-group">
-                                        {{ form.quantity.label }} {{ form.quantity }}
-                                    </div>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-10 col-sm-offset-9">
-                <button type="submit" id="id_submit" class="btn btn-primary">Salvar</button>
-            </div>
-        </div>
-    </form>
-</div>
 
+<div class="col-md-10 container-fluid">
+  <form action="." method="POST">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-7">
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" href="#collapseOne">
+              <span class="fa fa-user"></span> Doações </a> </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <div class="row">
+                <table class="table table-user-information">
+                  <tbody>
+                    <tr>
+                      <th class="col-md-3 text-justify"> {{ form.service_type.label }} </th>
+                      <td>{{ form.service_type }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> {{ form.donor.label }} </th>
+                      <td>{{ form.donor }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> {{ form.item.label }} </th>
+                      <td>{{ form.item }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> {{ form.description.label }} </th>
+                      <td>{{ form.description }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> {{ form.quantity.label }} </th>
+                      <td>{{ form.quantity }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="com-md-12">
+      <div class="col-md-4">
+        <!-- button back -->
+        <form class="navbar-form navbar-right" action="." method="get">
+          <a href="{% url 'donations:donation' %}">
+            <button type="button" class="btn btn-info btn-lg" style="width: 190px; height: 50px">
+              <span class="glyphicon glyphicon-back"></span> Voltar
+            </button>
+          </a>
+        </form>
+      </div>
+      <div class="col-md-2">
+          <button type="submit" class="btn btn-primary btn-lg"
+            style="width: 190px; height: 50px"> Salvar
+          </button>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
 
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from donations.models import Donations, Donors, Expenses, ItemsExpenses
-from donations.form import ItemsForm
+from donations.models import Donations, Donors, Expenses
+# from donations.forms import ExpensesForm
 
 
 class DonorsAdmin(admin.ModelAdmin):
@@ -15,16 +15,14 @@ class DonationsAdmin(admin.ModelAdmin):
                     'quantity', 'created_at']
     search_fields = ('service_type', 'donor', 'item')
     list_filter = ['service_type', 'created_at']
-    prepopulated_fields = {'slug': ('item',)}
-
+    
 
 class ExpensesAdmin(admin.ModelAdmin):
     list_display = ['service_type', 'item', 'description', 'quantity', 'price',
                     'total', 'date', 'created_at']
     search_fields = ('service_type',)
     list_filter = ['service_type', 'created_at']
-    prepopulated_fields = {'slug': ('item',)}
-    forms = ItemsForm
+    # forms = ExpensesForm
 
 
 admin.site.register(Donations, DonationsAdmin)

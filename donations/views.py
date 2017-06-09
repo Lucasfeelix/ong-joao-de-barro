@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, ListView, CreateView, UpdateView
 from django.views.generic import DetailView
 from django.core.urlresolvers import reverse_lazy
 from donations.models import Donations
-from donations.form import DonationsAddForm
+from donations.forms import DonationsAddForm
 
 
 class IndexView(TemplateView):
@@ -20,9 +20,6 @@ class DonationsListView(ListView):
 class DonationsCreateView(CreateView):
     model = Donations
     form_class = DonationsAddForm
-    # success_url = reverse_lazy('donations:donation')
-    # template_name = 'donations/donations_add.html'
-    # context_object_name = 'donations'
 
 
 class DonationsUpdateView(UpdateView):
@@ -33,14 +30,6 @@ class DonationsUpdateView(UpdateView):
 
     def get_object(self):
         return self.object.all()
-
-
-# def donation_detail(request, slug):
-#     donation = Donations.objects.get(slug=slug)
-#     context = {
-#         'donations': donations
-#     }
-#     return render(request, 'donations/donations-detail.html', context)
 
 
 index = IndexView.as_view()
