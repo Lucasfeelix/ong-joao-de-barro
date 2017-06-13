@@ -14,6 +14,7 @@ class DonationsListView(ListView):
     template_name = 'donations/donations_list.html'
     context_object_name = 'donations'
     model = Donations
+    queryset = Donations.objects.all().order_by('-date')
     paginate_by = 10
 
 
