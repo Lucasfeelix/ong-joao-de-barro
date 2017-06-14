@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load bootstrap %}
+{% load widget_tweaks %}
+
+{% block title %} Adicionar | {{ block.super}} {% endblock title %}
+
+{% block spacename %} Adicionar {% endblock spacename %}
+
+{% block container %}
+  <form class="form-horizontal col-sm-5" action="." method="POST">
+    {% csrf_token %}
+    {{ form|bootstrap_horizontal:'col-lg-4' }}
+	  <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-9">
+        <button type="submit" class="btn btn-primary"> Salvar </button>
+      </div>
+    </div>
+  </form>
+{% endblock %}

@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^entrar/$', login, {'template_name': 'login.html'}, name='login'),
     url(r'^sair/$', logout, {'next_page': 'login'}, name='logout'),
     url(r'doacoes/', include('donations.urls', namespace='donations')),
+    url(r'despesas/', include('expenses.urls', namespace='expenses')),
     url(r'^admin/', admin.site.urls),
 ]

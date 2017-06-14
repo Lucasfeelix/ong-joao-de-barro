@@ -1,5 +1,5 @@
 from django.contrib import admin
-from donations.models import Donations, Donors, Expenses
+from donations.models import Donations, Donors
 # from donations.forms import ExpensesForm
 
 
@@ -17,14 +17,5 @@ class DonationsAdmin(admin.ModelAdmin):
     list_filter = ['service_type', 'created_at']
 
 
-class ExpensesAdmin(admin.ModelAdmin):
-    list_display = ['service_type', 'item', 'description', 'quantity', 'price',
-                    'total', 'date', 'created_at']
-    search_fields = ('service_type',)
-    list_filter = ['service_type', 'created_at']
-    # forms = ExpensesForm
-
-
 admin.site.register(Donations, DonationsAdmin)
 admin.site.register(Donors, DonorsAdmin)
-admin.site.register(Expenses, ExpensesAdmin)

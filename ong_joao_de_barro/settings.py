@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bootstrapform',
     'core',
     'donations',
+    'expenses',
 ]
 
 MIDDLEWARE = [

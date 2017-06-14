@@ -1,6 +1,7 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 from core.models import TimeModel
-from core.helpers.multiple_choices import EXPENSES_TYPE
+from core.helpers.multiple_choices import EXPENSES_TYPE, UNIT_TYPE
 
 
 class Expenses(TimeModel):
@@ -9,6 +10,8 @@ class Expenses(TimeModel):
     item = models.CharField('Item', max_length=100, default='')
     description = models.TextField('Descrição', blank=True)
     quantity = models.IntegerField('Quantidade', default=0)
+    unit = models.CharField('Unidade', max_length=14, choices=UNIT_TYPE,
+                            default='')
     price = models.DecimalField('Preço', max_digits=6, decimal_places=2,
                                 default=0)
     date = models.DateTimeField('Data', auto_now_add=True)
@@ -26,4 +29,4 @@ class Expenses(TimeModel):
         verbose_name_plural = 'Despesas'
 
     def get_absolute_url(self):
-        return reverse('donations:donation_detail', kwargs={'pk': self.pk})
+        return reverse('expenses:expense_detail', kwargs={'pk': self.pk})

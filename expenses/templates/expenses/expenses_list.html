@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% load pagination %}
+
+{% block title %} Lista de Despesas | {{ block.super}} {% endblock title %}
+
+{% block spacename %} Lista de Despesas {% endblock spacename %}
+
+{% block container %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <form class="navbar-form navbar-right" action="." method="get">
+          <!-- add -->
+          <a href="{% url 'expenses:expense_add' %}">
+            <button id="new_customer" type="button" class="btn btn-primary">
+              <span class="glyphicon glyphicon-plus"></span> Adicionar
+            </button>
+          </a>
+          <!--
+            <button id="new_customer" type="button" class="btn btn-danger">
+              <span class="glyphicon glyphicon-remove"></span> Remover
+            </button>
+          -->
+
+          <!-- search form -->
+          <div class="form-group">
+            <input id="search_box" name="search_box" type="text" placeholder="Localizar..." class="form-control">
+            <button type="submit" class="btn btn-success form-control"><span class="glyphicon glyphicon-search"></span></button>
+          </div>
+      </form>
+    </div>
+    <div class="col-md-12">
+      <hr/>
+    </div>
+    <div class="col-md-12">
+    	<table class="table table-bordered">
+    		<thead>
+    			<tr>
+    				<th>Item</th>
+            <th>Descrição</th>
+            <th>Tipo de Serviço</th>
+            <th>Qtd.</th>
+            <th>Unidade</th>
+            <th>Preço</th>
+            <th>Total</th>
+            <th>Data</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+          {% for expense in expenses %}
+        			<tr>
+                  <td><a href="{{ expense.get_absolute_url }}">{{expense.item}}</a></td>
+                  <td>{{expense.description}}</td>
+                  <td>{{expense.service_type}}</td>
+                  <td>{{expense.quantity}}</td>
+                  <td>{{expense.unit}}</td>
+                  <td>{{expense.price}}</td>
+                  <td>R$ {{expense.total}}</td>
+                  <td>{{expense.date|date:"d/m/Y"}}</td>
+              </tr>
+          {% endfor %}
+    		</tbody>
+    	</table>
+    </div>
+  </div>
+  {% pagination request paginator page_obj%}
+</div>
+{% endblock %}

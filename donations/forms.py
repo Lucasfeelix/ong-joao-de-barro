@@ -1,6 +1,6 @@
 # coding=utf-8
 from django import forms
-from donations.models import Donations, Donors, Expenses, C_TYPE
+from donations.models import Donations, Donors
 
 
 class DonationsAddForm(forms.ModelForm):
