@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 from django.core.urlresolvers import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from expenses.models import Expenses
 from expenses.forms import ExpensesAddForm
 
 
-class ExpensesListView(ListView):
+class ExpensesListView(LoginRequiredMixin, ListView):
     template_name = 'expenses/expenses_list.html'
     context_object_name = 'expenses'
     model = Expenses
@@ -13,12 +14,12 @@ class ExpensesListView(ListView):
     paginate_by = 10
 
 
-class ExpensesDetailView(DetailView):
+class ExpensesDetailView(LoginRequiredMixin, DetailView):
     model = Expenses
     context_object_name = 'expenses'
 
 
-class ExpensesCreateView(CreateView):
+class ExpensesCreateView(LoginRequiredMixin, CreateView):
     model = Expenses
     form_class = ExpensesAddForm
 
