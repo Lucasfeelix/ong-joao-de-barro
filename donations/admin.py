@@ -15,7 +15,7 @@ class DonationsAdmin(admin.ModelAdmin):
                     'quantity', 'created_at']
     search_fields = ('service_type', 'donor', 'item')
     list_filter = ['service_type', 'created_at']
-    
+
 
 class ExpensesAdmin(admin.ModelAdmin):
     list_display = ['service_type', 'item', 'description', 'quantity', 'price',
