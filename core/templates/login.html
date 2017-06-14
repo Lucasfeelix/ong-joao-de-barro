@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+  	<title>{% block title %} Entrar {% endblock %}</title>
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> <!-- Bootstrap Core CSS -->
+    <link href="{% static 'distt/css/sb-admin-2.css' %}" rel="stylesheet"> <!-- Custom CSS -->
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css"> <!-- Custom Fonts -->
+</head>
+
+<body>
+  <div class="container-fluid">
+  	<div class="row">
+      <div class="col-md-6">
+    		<div class="col-md-6 col-md-offset-9 ">
+    		  <div class="page-header text-center">
+            <h1>Entrar</h1>
+          </div>
+          <form class="form-horizontal" method="post">
+            {% csrf_token %}
+            {# lista de erro que não está atrelada a determinado campo #}
+            {% for error in form.non_field_errors %}
+              <div class="alert alert-danger">
+                {{ error}}
+              </div>
+            {% endfor %}
+            <fieldset>
+              <div class="form-group {% if form.username.errors%} has-error {% endif %}">
+                <label for="{{ form.username.auto_id }}" class="col-md-2 control-label">{{ form.username.label }}</label>
+                <div class="col-md-9">
+                  {% render_field form.username class="form-control"%}
+                  {% for error in form.username.errors %}
+                    <span class="help-block"> {{ error }} </span>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="form-group {% if form.password.errors%} has-error {% endif %}">
+                <label for="{{ form.password.auto_id }}" class="col-md-2 control-label">{{ form.password.label }}</label>
+                <div class="col-md-9">
+                  {% render_field form.password class="form-control"%}
+                  {% for error in form.password.errors %}
+                    <span class="help-block"> {{ error }} </span>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-9 col-md-offset-3">
+                  <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
