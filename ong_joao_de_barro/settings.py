@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'core',
     'donations',
     'expenses',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,4 @@ STATIC_URL = '/static/'
 # Auth
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
+AUTH_USER_MODEL = 'accounts.User'
