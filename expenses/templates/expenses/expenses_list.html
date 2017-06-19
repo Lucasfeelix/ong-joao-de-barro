@@ -12,22 +12,33 @@
     <div class="col-md-12">
       <form class="navbar-form navbar-right" action="." method="get">
           <!-- add -->
-          <a href="{% url 'expenses:expense_add' %}">
-            <button id="new_customer" type="button" class="btn btn-primary">
-              <span class="glyphicon glyphicon-plus"></span> Adicionar
-            </button>
-          </a>
+          <div class="col-md-offset-4">
+            <a href="{% url 'expenses:expense_add' %}">
+              <button id="new_customer" type="button" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus"></span> Adicionar
+              </button>
+            </a>
+            <!-- search form -->
+            <div class="form-group">
+              <input id="search_box" name="search_box" type="text" placeholder="Localizar..." class="form-control">
+              <button type="submit" class="btn btn-success form-control"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+          </div>
+          <br>
+          <!-- search links -->
+          <ul class="list-inline text-right">
+            <li><a href="{% url 'expenses:expense' %}"><span class="fa fa-star status-aprovado"></span> Todos</a></li>
+            <li><a href="?service_type=Aluguel" name="aluguel"><span class="glyphicon glyphicon-ok-sign ok"></span> Aluguel</a></li>
+            <li><a href="?service_type=Compra" name="compra"><span class="glyphicon glyphicon-ok-sign ok"></span> Compra</a></li>
+            <li><a href="?service_type=Devolução" name="devolução"><span class="glyphicon glyphicon-ok-sign ok"></span> Devolução</a></li>
+            <li><a href="?service_type=Extorno" name="extorno"><span class="glyphicon glyphicon-ok-sign ok"></span> Extorno</a></li>
+            <li><a href="?service_type=Pagamento" name="pagamento"><span class="glyphicon glyphicon-ok-sign ok"></span> Pagamento</a></li>
+          </ul>
           <!--
             <button id="new_customer" type="button" class="btn btn-danger">
-              <span class="glyphicon glyphicon-remove"></span> Remover
+            <span class="glyphicon glyphicon-remove"></span> Remover
             </button>
           -->
-
-          <!-- search form -->
-          <div class="form-group">
-            <input id="search_box" name="search_box" type="text" placeholder="Localizar..." class="form-control">
-            <button type="submit" class="btn btn-success form-control"><span class="glyphicon glyphicon-search"></span></button>
-          </div>
       </form>
     </div>
     <div class="col-md-12">
