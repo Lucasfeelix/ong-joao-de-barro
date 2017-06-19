@@ -1,10 +1,10 @@
 from django.db import models
-from core.models import TimeModel
+from core.models import TimeStampedModel
 from django.core.urlresolvers import reverse
 from core.helpers.multiple_choices import DONATIONS_TYPE
 
 
-class Donors(TimeModel):
+class Donors(TimeStampedModel):
     name = models.CharField('Nome', max_length=100)
     slug = models.SlugField('Identificador', max_length=100, default='')
 
@@ -20,7 +20,7 @@ class Donors(TimeModel):
         return reverse('donations:donation_detail', kwargs={'slug': self.slug})
 
 
-class Donations(TimeModel):
+class Donations(TimeStampedModel):
     service_type = models.CharField('Tipo de serviço', max_length=12,
                                     choices=DONATIONS_TYPE,
                                     default='Recebimento')

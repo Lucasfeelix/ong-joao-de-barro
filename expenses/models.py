@@ -1,10 +1,10 @@
 from django.db import models
 from django.core.urlresolvers import reverse
-from core.models import TimeModel
+from core.models import TimeStampedModel
 from core.helpers.multiple_choices import EXPENSES_TYPE, UNIT_TYPE
 
 
-class Expenses(TimeModel):
+class Expenses(TimeStampedModel):
     service_type = models.CharField('Tipo de serviço', max_length=12,
                                     choices=EXPENSES_TYPE, default='Compra')
     item = models.CharField('Item', max_length=100, default='')
