@@ -28,7 +28,6 @@ class Donations(TimeStampedModel):
     item = models.CharField('Item', max_length=100, default='')
     description = models.TextField('Descrição', blank=True)
     quantity = models.PositiveSmallIntegerField('Quantidade', default=0)
-    date = models.DateTimeField('Data', auto_now_add=True)
 
     def __str__(self):
         return str(self.service_type)

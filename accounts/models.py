@@ -19,9 +19,9 @@ class User(AbstractBaseUser, PermissionsMixin):
                                         'Este valor deve conter apenas letras'
                                         ', números e os caracteres: @/./+/-/_'
                                         ' .', 'invalid')
-                                ], help_text='Um nome curto que será usado'
-                                'para identifica=lo de forma unica na plata'
-                                'forma')
+                                ], help_text='Um nome curto que será usado '
+                                'para identificá-lo de forma única na plata'
+                                'forma.')
     name = models.CharField('Nome', max_length=100, blank=True)
     email = models.EmailField('E-mail', unique=True)
     is_staff = models.BooleanField('Equipe', default=False)

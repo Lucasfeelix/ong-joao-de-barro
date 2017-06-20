@@ -7,7 +7,7 @@ from .models import Expenses
 class ExpensestMixin(object):
     def get_queryset(self):
         super(ExpensestMixin, self).get_queryset()
-        c = Expenses.objects.all().order_by('-date')
+        c = Expenses.objects.all().order_by('-created_at')
         if self.request.GET.get('service_type') == 'Aluguel':
             c = c.filter(service_type='Aluguel')
         elif self.request.GET.get('service_type') == 'Compra':

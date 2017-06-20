@@ -13,12 +13,4 @@ class IndexView(LoginRequiredMixin, TemplateView):
     template_name = 'index.html'
 
 
-class RegisterCreateView(CreateView):
-    model = User
-    form_class = UserCreationForm
-    template_name = 'register.html'
-    success_url = reverse_lazy('index')
-
-
 index = IndexView.as_view()
-register = RegisterCreateView.as_view()

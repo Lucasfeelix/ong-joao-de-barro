@@ -130,6 +130,11 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
 AUTH_USER_MODEL = 'accounts.User'
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.ModelBackend',
+)
+
 try:
     from .local_settings import *
 except ImportError:

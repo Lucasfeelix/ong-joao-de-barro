@@ -3,6 +3,7 @@ from django.views.generic import TemplateView, ListView, CreateView, UpdateView
 from django.views.generic import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse_lazy
+from donations.mixins import DonationstMixin
 from donations.models import Donations
 from donations.forms import DonationsAddForm
 
@@ -11,12 +12,12 @@ class IndexView(TemplateView):
     template_name = 'donations/index.html'
 
 
-class DonationsListView(LoginRequiredMixin, ListView):
+class DonationsListView(DonationstMixin, LoginRequiredMixin, ListView):
     template_name = 'donations/donations_list.html'
     context_object_name = 'donations'
     model = Donations
-    queryset = Donations.objects.all().order_by('-date')
     paginate_by = 10
+    # queryset = Donations.objects.all().order_by('-date')
 
 
 class DonationsCreateView(LoginRequiredMixin, CreateView):

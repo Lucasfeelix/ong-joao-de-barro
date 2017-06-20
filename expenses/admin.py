@@ -4,7 +4,7 @@ from expenses.models import Expenses
 
 class ExpensesAdmin(admin.ModelAdmin):
     list_display = ['service_type', 'item', 'description', 'quantity', 'price',
-                    'total', 'date', 'created_at']
+                    'total', 'created_at']
     search_fields = ('service_type',)
     list_filter = ['service_type', 'created_at']
 

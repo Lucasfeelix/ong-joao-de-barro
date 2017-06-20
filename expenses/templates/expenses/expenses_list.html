@@ -12,7 +12,7 @@
     <div class="col-md-12">
       <form class="navbar-form navbar-right" action="." method="get">
           <!-- add -->
-          <div class="col-md-offset-4">
+          <div class="col-md-12 col-md-offset-3">
             <a href="{% url 'expenses:expense_add' %}">
               <button id="new_customer" type="button" class="btn btn-primary">
                 <span class="glyphicon glyphicon-plus"></span> Adicionar
@@ -24,7 +24,7 @@
               <button type="submit" class="btn btn-success form-control"><span class="glyphicon glyphicon-search"></span></button>
             </div>
           </div>
-          <br>
+          <br> <br>
           <!-- search links -->
           <ul class="list-inline text-right">
             <li><a href="{% url 'expenses:expense' %}"><span class="fa fa-star status-aprovado"></span> Todos</a></li>
@@ -68,7 +68,7 @@
                   <td>{{expense.unit}}</td>
                   <td>{{expense.price}}</td>
                   <td>R$ {{expense.total}}</td>
-                  <td>{{expense.date|date:"d/m/Y"}}</td>
+                  <td>{{expense.created_at|date:"d/m/Y H:i A"}}</td>
               </tr>
           {% endfor %}
     		</tbody>

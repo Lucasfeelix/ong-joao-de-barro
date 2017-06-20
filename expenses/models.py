@@ -14,7 +14,6 @@ class Expenses(TimeStampedModel):
                             default='')
     price = models.DecimalField('Preço', max_digits=6, decimal_places=2,
                                 default=0)
-    date = models.DateTimeField('Data', auto_now_add=True)
 
     @property
     def total(self):
