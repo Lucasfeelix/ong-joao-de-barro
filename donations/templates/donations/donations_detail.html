@@ -43,7 +43,7 @@
                       </tr>
                       <tr>
                         <th class="text-justify"> Data </th>
-                        <td>{{ donations.date|date }}</td>
+                        <td>{{ donations.created_at|date:"d/m/Y H:i A" }}</td>
                       </tr>
                   </tbody>
                 </table>
@@ -65,38 +65,4 @@
     </div>
   </div>
 </div>
-
-<!--
-    <div class="col-md-5">
-        <table class="table table-user-information">
-            <tbody>
-              <tr>
-                <th class="col-md-3 text-right"> Tipo de serviço </th>
-                <td>{{ donations.service_type }}</td>
-              </tr>
-              <tr>
-                <th class="col-md-3 text-right"> Identificador </th>
-                <td>{{ donations.slug }}</td>
-              </tr>
-              <tr>
-                <th class="col-md-3 text-right">  Doador </th>
-                <td>{{ donations.donor }}</td>
-              </tr>
-                <tr>
-                  <th class="col-md-3 text-right"> Descrição </th>
-                  <td>{{ donations.description }}</td>
-                </tr>
-                <tr>
-                  <th class="col-md-3 text-right"> Quantidade </th>
-                  <td>{{ donations.quantity }}</td>
-                </tr>
-                <tr>
-                  <th class="col-md-3 text-right"> Data </th>
-                  <td>{{ donations.date|date }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
--->
 {% endblock %}

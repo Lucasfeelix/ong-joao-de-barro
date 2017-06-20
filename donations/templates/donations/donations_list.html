@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col-md-12">
       <form class="navbar-form navbar-right" action="." method="get">
-        <div class="col-md-12 col-md-offset-1">
+        <div class="col-md-12">
           <!-- add -->
           <a href="{% url 'donations:donation_add' %}">
             <button id="new_customer" type="button" class="btn btn-primary">
@@ -19,19 +19,20 @@
             </button>
           </a>
           <!-- search form -->
-          <div class="form-group">
-            <input id="search_box" name="search_box" type="text" placeholder="Localizar..." class="form-control">
-            <button type="submit" class="btn btn-success form-control"><span class="glyphicon glyphicon-search"></span></button>
-          </div>
-        </div>
+          <form class="navbar-form navbar-left" role="search" action="{% url 'expenses:expense' %}">
+            <div class="form-group">
+              <input name="q" type="text" class="form-control" placeholder="Pesquisar..." />
+              <button type="submit" class="btn btn-success form-control"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+          </form>
         <br><br>
         <!-- search links -->
         <ul class="list-inline text-right">
           <li><a href="{% url 'donations:donation' %}"><span class="fa fa-star status-aprovado"></span> Todos</a></li>
-          <li><a href="?service_type=Doação" name="aluguel"><span class="glyphicon glyphicon-ok-sign ok"></span> Doação </a></li>
-          <li><a href="?service_type=Recebimento" name="compra"><span class="glyphicon glyphicon-ok-sign ok"></span> Recebimento </a></li>
+          <li><a href="?service_type=Doação" name="doação"><span class="glyphicon glyphicon-ok-sign ok"></span> Doação </a></li>
+          <li><a href="?service_type=Recebimento" name="recebimento"><span class="glyphicon glyphicon-ok-sign ok"></span> Recebimento </a></li>
         </ul>
-
+      </div>
       </form>
     </div>
     <div class="col-md-12">
