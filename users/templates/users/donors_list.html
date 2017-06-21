@@ -40,35 +40,48 @@
       <hr/>
     </div>
     <div class="col-md-12">
-    	<table class="table table-bordered">
-    		<thead>
-    			<tr>
-    				<th>Doador</th>
-            <th>Ativo</th>
-            <th>Endereço</th>
-            <th>Número</th>
-            <th>Bairro</th>
-            <th>Cidade</th>
-            <th>Estado</th>
-            <th>Data  </th>
-    			</tr>
-    		</thead>
-    		<tbody>
-          {% for donor in donors %}
-        			<tr>
-                  <td><a href="{{ donor.get_absolute_url }}">{{donor.name}}</a></td>
-                  <td>{{donor.is_active}}</td>
-                  <td>{{donor.address}}</td>
-                  <td>{{donor.number}}</td>
-                  <td>{{donor.neighborhood}}</td>
-                  <td>{{donor.city}}</td>
-                  <td>{{donor.state}}</td>
-                  <td>{{donor.created_at|date:"d/m/Y H:i A"}}</td>
-              </tr>
-          {% endfor %}
-    		</tbody>
-    	</table>
+      {% if donors %}
+      	<table class="table table-bordered">
+      		<thead>
+      			<tr>
+      				<th>Doador</th>
+              <th>Ativo</th>
+              <th>Endereço</th>
+              <th>Número</th>
+              <th>Bairro</th>
+              <th>Cidade</th>
+              <th>Estado</th>
+              <th>Data  </th>
+      			</tr>
+      		</thead>
+      		<tbody>
+            {% for donor in donors %}
+          			<tr>
+                    <td><a href="{{ donor.get_absolute_url }}">{{donor.name}}</a></td>
+                    {% if donor.is_active == True %}
+                      <td><p class="glyphicon glyphicon-ok text-success"></p></td>
+                    {% else %}
+                      <td><p class="glyphicon glyphicon-remove text-danger"></p></td>
+                    {% endif %}
+                    <td>{{donor.is_active}}</td>
+                    <td>{{donor.address}}</td>
+                    <td>{{donor.number}}</td>
+                    <td>{{donor.neighborhood}}</td>
+                    <td>{{donor.city}}</td>
+                    <td>{{donor.state}}</td>
+                    <td>{{donor.created_at|date:"d/m/Y H:i A"}}</td>
+                </tr>
+            {% endfor %}
+      		</tbody>
+      	</table>
+        {% else %}
+        <p class="alert alert-warning">Sem itens na lista.</p>
+      {% endif %}
     </div>
+  </div>
+  <hr>
+  <div>
+    <h3><b>Total:</b> {{ donors|length }} doadores</h3>
   </div>
   {% pagination request paginator page_obj%}
 </div>

@@ -39,6 +39,7 @@
       <hr/>
     </div>
     <div class="col-md-12">
+      {% if donations %}
     	<table class="table table-bordered">
     		<thead>
     			<tr>
@@ -58,7 +59,14 @@
           {% endfor %}
     		</tbody>
     	</table>
+      {% else %}
+      <p class="alert alert-warning">Sem itens na lista.</p>
+    {% endif %}
     </div>
+  </div>
+  <hr>
+  <div>
+    <h3><b>Total:</b> {{ proposal_list|length }} doações</h3>
   </div>
   {% pagination request paginator page_obj%}
 </div>
