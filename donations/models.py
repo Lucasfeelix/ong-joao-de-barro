@@ -2,22 +2,7 @@ from django.db import models
 from core.models import TimeStampedModel
 from django.core.urlresolvers import reverse
 from core.helpers.multiple_choices import DONATIONS_TYPE
-
-
-class Donors(TimeStampedModel):
-    name = models.CharField('Nome', max_length=100)
-    slug = models.SlugField('Identificador', max_length=100, default='')
-
-    def __str__(self):
-        return str(self.name)
-
-    class Meta:
-        ordering = ['name']
-        verbose_name = 'Doador'
-        verbose_name_plural = 'Doadores'
-
-    def get_absolute_url(self):
-        return reverse('donations:donation_detail', kwargs={'slug': self.slug})
+from users.models import Donors
 
 
 class Donations(TimeStampedModel):

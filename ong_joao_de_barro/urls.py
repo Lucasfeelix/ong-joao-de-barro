@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'doacoes/', include('donations.urls', namespace='donations')),
     url(r'despesas/', include('expenses.urls', namespace='expenses')),
     url(r'conta/', include('accounts.urls', namespace='accounts')),
+    url(r'usuarios/', include('users.urls', namespace='users')),
     url(r'^admin/', admin.site.urls),
 ]

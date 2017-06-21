@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %} Detalhes do doador | {{ block.super}} {% endblock title %}
+
+{% block spacename %} Detalhes do doador {{object.item}} {% endblock spacename %}
+
+{% block container %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" href="#collapseOne">
+              <span class="fa fa-user"></span> Doador </a> </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <div class="row">
+                <table class="table table-user-information">
+                  <tbody>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Doador </th>
+                      <td>{{ donors.name }}</td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Ativo </th>
+                      <td>{{ donors.is_active }}</td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Endereço </th>
+                      <td>{{ donors.address }}</td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Número </th>
+                      <td>{{ donors.number }} </td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Bairro </th>
+                      <td>{{ donors.neighborhood }} </td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Cidade </th>
+                      <td>{{ donors.city }} </td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Estado </th>
+                      <td>{{ donors.state }} </td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Data </th>
+                      <td>{{ donors.created_at|date:"d/m/Y H:i A" }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- button back -->
+      <form class="navbar-form navbar-right" action="." method="get">
+        <a href="{% url 'users:donors' %}">
+          <a href="{% url 'users:donors' %}">
+          <button type="button" class="btn btn-info btn-lg" style="width: 190px; height: 50px">
+            <span class="glyphicon glyphicon-back"></span> Voltar
+          </button>
+        </a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

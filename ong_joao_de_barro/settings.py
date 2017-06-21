@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'bootstrapform',
-    'core',
-    'donations',
     'expenses',
     'accounts',
+    'core',
+    'users',
+    'donations',
 ]
 
 MIDDLEWARE = [

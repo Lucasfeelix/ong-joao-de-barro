@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% load pagination %}
+
+{% block title %} Lista de Doadores | {{ block.super}} {% endblock title %}
+
+{% block spacename %} Lista de Doadores {% endblock spacename %}
+
+{% block container %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <form class="navbar-form navbar-right" action="." method="get">
+        <div class="col-md-12">
+          <!-- add -->
+          <a href="{% url 'users:donors_add' %}">
+            <button id="new_customer" type="button" class="btn btn-primary">
+              <span class="glyphicon glyphicon-plus"></span> Adicionar
+            </button>
+          </a>
+          <!-- search form -->
+          <form class="navbar-form navbar-left" role="search" action="{% url 'expenses:expense' %}">
+  	        <div class="form-group">
+	            <input name="q" type="text" class="form-control" placeholder="Pesquisar..." />
+              <button type="submit" class="btn btn-success form-control"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+          </form>
+          <br><br>
+          <!-- Search links-->
+          <ul class="list-inline text-right">
+            <li><a href="{% url 'users:donors' %}"><span class="fa fa-star status-aprovado"></span> Todos</a></li>
+            <li><a href="?service_type=Aluguel" name="aluguel"><span class="glyphicon glyphicon-ok-sign ok"></span> Aluguel</a></li>
+            <li><a href="?service_type=Compra" name="compra"><span class="glyphicon glyphicon-ok-sign ok"></span> Compra</a></li>
+            <li><a href="?service_type=Pagamento" name="pagamento"><span class="glyphicon glyphicon-ok-sign ok"></span> Pagamento</a></li>
+          </ul>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-12">
+      <hr/>
+    </div>
+    <div class="col-md-12">
+    	<table class="table table-bordered">
+    		<thead>
+    			<tr>
+    				<th>Doador</th>
+            <th>Ativo</th>
+            <th>Endereço</th>
+            <th>Número</th>
+            <th>Bairro</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th>Data  </th>
+    			</tr>
+    		</thead>
+    		<tbody>
+          {% for donor in donors %}
+        			<tr>
+                  <td><a href="{{ donor.get_absolute_url }}">{{donor.name}}</a></td>
+                  <td>{{donor.is_active}}</td>
+                  <td>{{donor.address}}</td>
+                  <td>{{donor.number}}</td>
+                  <td>{{donor.neighborhood}}</td>
+                  <td>{{donor.city}}</td>
+                  <td>{{donor.state}}</td>
+                  <td>{{donor.created_at|date:"d/m/Y H:i A"}}</td>
+              </tr>
+          {% endfor %}
+    		</tbody>
+    	</table>
+    </div>
+  </div>
+  {% pagination request paginator page_obj%}
+</div>
+{% endblock %}

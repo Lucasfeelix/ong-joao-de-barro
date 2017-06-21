@@ -13,12 +13,12 @@ class TimeStampedModel(models.Model):
 
 class Address(models.Model):
     address = models.CharField('Endereço', max_length=100, blank=True)
-    number = models.DecimalField('Número', max_digits=5)
+    number = models.IntegerField('Número')
     complement = models.CharField('Complemento', max_length=100, blank=True)
     neighborhood = models.CharField('Bairro', max_length=100, blank=True)
     city = models.CharField('Cidade', max_length=100, blank=True)
-    state = models.CharField('Estado', max_length=2, choices=UF, blank=True)
-    cep = models.CharField('CEP', max_length=9, blank=True)
+    state = models.CharField('Estado', max_length=16, choices=UF, blank=True)
+    cep = models.CharField('CEP', max_length=8, blank=True)
 
     class Meta:
             abstract = True
