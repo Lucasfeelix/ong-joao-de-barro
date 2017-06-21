@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load bootstrap %}
+
+{% load widget_tweaks %}
+
+{% block title %} Detalhes da Doação | {{ block.super}} {% endblock title %}
+
+{% block spacename %} Olá {{user}} {% endblock spacename %}
+
+{% block container %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" href="#collapseOne">
+              <span class="fa fa-user"></span> Doações </a> </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <div class="row">
+                <table class="table table-user-information">
+                  <tbody>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Username </th>
+                      <td>{{ users.username }}</td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Data de entrada </th>
+                      <td>{{ users.date_joined|date:"d/m/Y H:i A" }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -5,7 +5,7 @@ from core.helpers.multiple_choices import UF
 
 class TimeStampedModel(models.Model):
     created_at = models.DateTimeField('Criado em', auto_now_add=True)
-    modified = models.DateTimeField('Modificado em', auto_now=True)
+    modified_at = models.DateTimeField('Modificado em', auto_now=True)
 
     class Meta:
         abstract = True
