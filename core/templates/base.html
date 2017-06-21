@@ -31,7 +31,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Olá {{ user }} <i class="fa fa-caret-down"></i></a>
           <ul class="dropdown-menu dropdown-user">
-            <li><a href="{% url 'accounts:user_detail' user.id %}"><i class="fa fa-user fa-fw"></i> User Profile</a>
+            <li><a href="{% url 'accounts:index' %}"><i class="fa fa-user fa-fw"></i> User Profile</a>
             </li>
             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
             </li>
@@ -58,7 +58,7 @@
             </li>
             <li><a href="#"><i class="fa fa-user"></i> Minha conta <span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
-                <li><a href="{% url 'accounts:user_detail' user.id %}"> Informações de perfil </a></li>
+                <li><a href="{% url 'accounts:index' %}"> Informações de perfil </a></li>
                 <li><a href="{% url 'accounts:update_user' %}"> Alterar meus dados </a></li>
                 <li><a href="{% url 'accounts:update_password' %}"> Alterar senha </a></li>
               </ul>
