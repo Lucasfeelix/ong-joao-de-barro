@@ -29,9 +29,9 @@
           <!-- Search links-->
           <ul class="list-inline text-right">
             <li><a href="{% url 'expenses:expense' %}"><span class="fa fa-star status-aprovado"></span> Todos</a></li>
-            <li><a href="?service_type=Aluguel" name="aluguel"><span class="glyphicon glyphicon-ok-sign ok"></span> Aluguel</a></li>
-            <li><a href="?service_type=Compra" name="compra"><span class="glyphicon glyphicon-ok-sign ok"></span> Compra</a></li>
-            <li><a href="?service_type=Pagamento" name="pagamento"><span class="glyphicon glyphicon-ok-sign ok"></span> Pagamento</a></li>
+            <li><a href="?service_type=Aluguel" name="aluguel"><span class="fa fa-circle"></span> Aluguel</a></li>
+            <li><a href="?service_type=Compra" name="compra"><span class="fa fa-circle"></span> Compra</a></li>
+            <li><a href="?service_type=Pagamento" name="pagamento"><span class="fa fa-circle"></span> Pagamento</a></li>
           </ul>
         </div>
       </form>
@@ -75,12 +75,9 @@
     </div>
   </div>
   <hr>
-  <div class="col-md-12">
+  <div class="row">
     <div class="col-md-6">
-      <h3><b>Total:</b> {{ expenses|length }} despesas</h3>
-    </div>
-    <div class="col-md-6">
-      <h3><b>Valor total:</b> R$ {{ expenses.total }}</h3>
+      <h3><b>Total:</b> {{ expenses|length }} despesa{{ expenses|pluralize }}</h3>
     </div>
   </div>
   {% pagination request paginator page_obj%}

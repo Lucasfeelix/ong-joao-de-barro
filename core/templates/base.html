@@ -46,12 +46,12 @@
           <ul class="nav" id="side-menu">
             <br>
             <li><a href="{% url 'index' %}"><i class="fa fa-dashboard fa-fw"></i> Dashboard </a></li>
-            <li><a href="{% url 'donations:donation' %}"><i class="fa fa-gratipay"></i> Doações </a></li>
-            <li><a href="{% url 'expenses:expense' %}"><i class="fa fa-home"></i> Despesas </a></li>
-            <li><a href="#"><i class="fa fa-user"></i> CRM <span class="fa arrow"></span></a>
+            <li><a href="{% url 'donations:donation' %}"><i class="glyphicon glyphicon-gift"></i> Doações </a></li>
+            <li><a href="{% url 'expenses:expense' %}"><i class="glyphicon glyphicon-list-alt"></i> Despesas </a></li>
+            <li><a href="#"><i class="fa fa-users"></i> Consultar <span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
                 <li><a href="#"> Alunos </a></li>
-                <li><a href="{% url 'users:donors' %}"> Doadores </a></li>
+                <li><a href="{% url 'users:donors_list' %}"> Doadores </a></li>
                 <li><a href="#"> Funcionários </a></li>
                 <li><a href="#"> Professores </a></li>
               </ul>

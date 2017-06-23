@@ -6,7 +6,6 @@ from core.models import Address, TimeStampedModel
 
 class Donors(TimeStampedModel, Address):
     name = models.CharField('Nome', max_length=100, unique=True)
-    # slug = models.SlugField('Identificador', max_length=100, default='')
     is_active = models.BooleanField('Ativo', default=True)
 
     def __str__(self):

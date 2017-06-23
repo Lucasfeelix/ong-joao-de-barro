@@ -3,9 +3,9 @@
 {% load bootstrap %}
 {% load widget_tweaks %}
 
-{% block title %} Adicionar Doador | {{ block.super}} {% endblock title %}
+{% block title %} Atualizar dados | {{ block.super}} {% endblock title %}
 
-{% block spacename %} Adicionar Doador {% endblock spacename %}
+{% block spacename %} Atualizar dados {% endblock spacename %}
 
 {% block container %}
   <form class="form-horizontal col-sm-5" action="." method="POST">
@@ -22,7 +22,7 @@
     <form class="navbar-form navbar-right" action="." method="get">
       <a href="{% url 'users:donors_list' %}">
         <button type="button" class="btn btn-info btn-lg" style="width: 190px; height: 50px">
-          <span class="glyphicon glyphicon-back"></span> Voltar
+          <span class="glyphicon glyphicon-back"></span> Cancelar edição
         </button>
       </a>
     </form>

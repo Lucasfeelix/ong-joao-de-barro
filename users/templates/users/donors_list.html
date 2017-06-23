@@ -28,10 +28,9 @@
           <br><br>
           <!-- Search links-->
           <ul class="list-inline text-right">
-            <li><a href="{% url 'users:donors' %}"><span class="fa fa-star status-aprovado"></span> Todos</a></li>
-            <li><a href="?service_type=Aluguel" name="aluguel"><span class="glyphicon glyphicon-ok-sign ok"></span> Aluguel</a></li>
-            <li><a href="?service_type=Compra" name="compra"><span class="glyphicon glyphicon-ok-sign ok"></span> Compra</a></li>
-            <li><a href="?service_type=Pagamento" name="pagamento"><span class="glyphicon glyphicon-ok-sign ok"></span> Pagamento</a></li>
+            <li><a href="{% url 'users:donors_list' %}"><span class="fa fa-star status-aprovado"></span> Todos</a></li>
+            <li><a href="?is_active=True" name="frue"><span class="glyphicon glyphicon-ok-sign ok text-success"></span> Ativos </a></li>
+            <li><a href="?is_active=False" name="false"><span class="glyphicon glyphicon-ok-sign ok text-danger"></span> Desativados </a></li>
           </ul>
         </div>
       </form>
@@ -51,19 +50,18 @@
               <th>Bairro</th>
               <th>Cidade</th>
               <th>Estado</th>
-              <th>Data  </th>
+              <th>Data</th>
       			</tr>
       		</thead>
       		<tbody>
             {% for donor in donors %}
           			<tr>
                     <td><a href="{{ donor.get_absolute_url }}">{{donor.name}}</a></td>
-                    {% if donor.is_active == True %}
+                    {% if donor.is_active is True %}
                       <td><p class="glyphicon glyphicon-ok text-success"></p></td>
                     {% else %}
                       <td><p class="glyphicon glyphicon-remove text-danger"></p></td>
                     {% endif %}
-                    <td>{{donor.is_active}}</td>
                     <td>{{donor.address}}</td>
                     <td>{{donor.number}}</td>
                     <td>{{donor.neighborhood}}</td>
@@ -81,7 +79,7 @@
   </div>
   <hr>
   <div>
-    <h3><b>Total:</b> {{ donors|length }} doadores</h3>
+    <h3><b>Total:</b> {{ donors|length }} doadore{{ donors|length|pluralize }}</h3>
   </div>
   {% pagination request paginator page_obj%}
 </div>
