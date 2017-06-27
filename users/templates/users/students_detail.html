@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %} Detalhes do Aluno | {{ block.super}} {% endblock title %}
+
+{% block spacename %} Detalhes de {{ students.name }} {{ students.last_name }} {% endblock spacename %}
+
+{% block container %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" href="#collapseOne">
+              <span class="fa fa-user"></span> Aluno </a> </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <div class="row">
+                <table class="table table-user-information">
+                  <tbody>
+                    <tr>
+                      <th class="text-justify"> Ativo </th>
+                      {% if students.is_active is True %}
+                        <td><p class="glyphicon glyphicon-ok text-success"></p></td>
+                      {% else %}
+                        <td><p class="glyphicon glyphicon-remove text-danger"></p></td>
+                      {% endif %}
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Aluno </th>
+                      <td>{{ students.name }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Sobrenome </th>
+                      <td>{{ students.last_name }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Email </th>
+                      <td>{{ students.email }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Telefone </th>
+                      <td>{{ students.phone }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Celular </th>
+                      <td>{{ students.cellphone }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Nascimento </th>
+                      <td>{{ students.date_of_birth }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Gênero </th>
+                      <td>{{ students.gender }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Mãe </th>
+                      <td>{{ students.mothers_name }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Pai </th>
+                      <td>{{ students.fathers_name }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> RG </th>
+                      <td>{{ students.rg }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> CPF </th>
+                      <td>{{ students.cpf }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Escolaridade </th>
+                      <td>{{ students.scholarity }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Escola </th>
+                      <td>{{ students.school }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Periodo </th>
+                      <td>{{ students.time }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Profissão </th>
+                      <td>{{ students.occupation }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Estado civil </th>
+                      <td>{{ students.civil_status }}</td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Endereço </th>
+                      <td>{{ students.address }}</td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Número </th>
+                      <td>{{ students.number }} </td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Complemento </th>
+                      <td>{{ students.complement }} </td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Bairro </th>
+                      <td>{{ students.neighborhood }} </td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Cidade </th>
+                      <td>{{ students.city }} </td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Estado </th>
+                      <td>{{ students.state }} </td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> CEP </th>
+                      <td>{{ students.cep }} </td>
+                    </tr>
+                    <tr>
+                      <th class="text-justify"> Data </th>
+                      <td>{{ students.created_at|date:"d/m/Y H:i A" }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Observações </th>
+                      <td>{{ students.comments }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- button back -->
+      <form class="navbar-form navbar-right" action="." method="get">
+        <a href="{% url 'users:students_update' students.pk %}">
+          <a href="{% url 'users:students_update' students.pk %}">
+            <button type="button" class="btn btn-primary btn-lg" style="width: 140px; height: 50px">
+              <span class="glyphicon glyphicon-back"></span> Editar
+            </button>
+          </a>
+        </a>
+        <a href="{% url 'users:students_list' %}">
+          <a href="{% url 'users:students_list' %}">
+            <button type="button" class="btn btn-info btn-lg" style="width: 140px; height: 50px">
+              <span class="glyphicon glyphicon-back"></span> Voltar
+            </button>
+          </a>
+        </a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

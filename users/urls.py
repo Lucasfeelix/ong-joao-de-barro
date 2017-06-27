@@ -9,4 +9,10 @@ urlpatterns = [
         name='donors_detail'),
     url(r'^editar-doador/(?P<pk>[\w_-]+)/$', views.donors_update,
         name='donors_update'),
+    url(r'^alunos/$', views.students_list, name='students_list'),
+    url(r'^adicionar-aluno/$', views.students_add, name='students_add'),
+    url(r'^detalhes-aluno/(?P<pk>[\w_-]+)/$', views.students_detail,
+        name='students_detail'),
+    url(r'^editar-aluno/(?P<pk>[\w_-]+)/$', views.students_update,
+        name='students_update'),
 ]

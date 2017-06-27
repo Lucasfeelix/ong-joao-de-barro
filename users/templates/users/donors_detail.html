@@ -22,12 +22,16 @@
                 <table class="table table-user-information">
                   <tbody>
                     <tr>
-                      <th class="col-md-3 text-justify"> Doador </th>
-                      <td>{{ donors.name }}</td>
+                      <th class="text-justify"> Ativo </th>
+                      {% if donors.is_active is True %}
+                        <td><p class="glyphicon glyphicon-ok text-success"></p></td>
+                      {% else %}
+                        <td><p class="glyphicon glyphicon-remove text-danger"></p></td>
+                      {% endif %}
                     </tr>
                     <tr>
-                      <th class="text-justify"> Ativo </th>
-                      <td>{{ donors.is_active }}</td>
+                      <th class="col-md-3 text-justify"> Doador </th>
+                      <td>{{ donors.name }}</td>
                     </tr>
                     <tr>
                       <th class="text-justify"> Endereço </th>

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% load pagination %}
+
+{% block title %} Lista de Alunos | {{ block.super}} {% endblock title %}
+
+{% block spacename %} Lista de Alunos {% endblock spacename %}
+
+{% block container %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <form class="navbar-form navbar-right" action="." method="get">
+        <div class="col-md-12">
+          <!-- add -->
+          <a href="{% url 'users:students_add' %}">
+            <button id="new_customer" type="button" class="btn btn-primary">
+              <span class="glyphicon glyphicon-plus"></span> Adicionar
+            </button>
+          </a>
+          <!-- search form -->
+          <form class="navbar-form navbar-left" role="search" action="{% url 'users:students_list' %}">
+  	        <div class="form-group">
+	            <input name="q" type="text" class="form-control" placeholder="Pesquisar..." />
+              <button type="submit" class="btn btn-success form-control"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+          </form>
+          <br><br>
+          <!-- Search links-->
+          <ul class="list-inline text-right">
+            <li><a href="{% url 'users:students_list' %}"><span class="fa fa-star status-aprovado"></span> Todos</a></li>
+            <li><a href="?is_active=True" name="frue"><span class="glyphicon glyphicon-ok-sign ok text-success"></span> Ativos </a></li>
+            <li><a href="?is_active=False" name="false"><span class="glyphicon glyphicon-ok-sign ok text-danger"></span> Desativados </a></li>
+          </ul>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-12">
+      <hr/>
+    </div>
+    <div class="col-md-12">
+      {% if students %}
+      	<table class="table table-bordered">
+      		<thead>
+      			<tr>
+      				<th>Aluno</th>
+              <th>Ativo</th>
+              <th>Data de nascimento</th>
+              <th>Email</th>
+              <th>Telefone</th>
+              <th>Celular</th>
+              <th>Data</th>
+      			</tr>
+      		</thead>
+      		<tbody>
+            {% for student in students %}
+          			<tr>
+                    <td><a href="{{ student.get_absolute_url }}">{{student.name}} {{student.last_name}}</a></td>
+                    {% if student.is_active is True %}
+                      <td><p class="glyphicon glyphicon-ok text-success"></p></td>
+                    {% else %}
+                      <td><p class="glyphicon glyphicon-remove text-danger"></p></td>
+                    {% endif %}
+                    <td>{{student.date_of_birth|date:"d/m/Y"}}</td>
+                    <td>{{student.email}}</td>
+                    <td>{{student.phone}}</td>
+                    <td>{{student.cellphone}}</td>
+                    <td>{{student.created_at|date:"d/m/Y H:i A"}}</td>
+                </tr>
+            {% endfor %}
+      		</tbody>
+      	</table>
+        {% else %}
+        <p class="alert alert-warning">Sem itens na lista.</p>
+      {% endif %}
+    </div>
+  </div>
+  <hr>
+  <div>
+    <h3><b>Total:</b> {{ students|length }} aluno{{ students|length|pluralize }}</h3>
+  </div>
+  {% pagination request paginator page_obj%}
+</div>
+{% endblock %}

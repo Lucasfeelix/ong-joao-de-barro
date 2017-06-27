@@ -40,3 +40,32 @@ UF = (('Acre', 'Acre'),
       ('Sergipe', 'Sergipe'),
       (u'São Paulo', u'São Paulo'),
       ('Tocantins', 'Tocantins'))
+
+CIVIL_STATUS = ((u'Casado(a)', u'Casado(a)'),
+                (u'Divorciado(a)', u'Divorciado(a)'),
+                (u'Separado(a)', u'Separado(a)'),
+                (u'Solteiro(a)', u'Solteiro(a)'),
+                (u'União Estável', u'União Estável'),
+                (u'Viúvo(a)', u'Viúvo(a)'))
+
+GENDER = ((u'Feminino', u'Feminino'),
+          (u'Masculino', u'Masculino'))
+
+
+SCHOLARITY = ((u'Fundamental - Incompleto', u'Fundamental - Incompleto'),
+              (u'Fundamental - Completo', u'Fundamental - Completo'),
+              (u'Médio - Incompleto', u'Médio - Incompleto'),
+              (u'Médio - Completo', u'Médio - Completo'),
+              (u'Superior - Incompleto', u'Superior - Incompleto'),
+              (u'Superior - Completo', u'Superior - Completo'),
+              (u'Pós-graduação - Incompleto', u'Pós-graduação - Incompleto'),
+              (u'Pós-graduação - Completo', u'Pós-graduação - Completo'),
+              (u'Mestrado - Incompleto', u'Mestrado - Incompleto'),
+              (u'Mestrado - Completo', u'Mestrado - Completo'),
+              (u'Doutorado - Incompleto', u'Doutorado - Incompleto'),
+              (u'Doutorado - Completo', u'Doutorado - Completo'))
+
+TIME = ((u'Matutino', u'Matutino'),
+        (u'Diurno', u'Diurno'),
+        (u'Vespertino', u'Vespertino'),
+        (u'Noturno', u'Noturno'))
