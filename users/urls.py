@@ -15,4 +15,11 @@ urlpatterns = [
         name='students_detail'),
     url(r'^editar-aluno/(?P<pk>[\w_-]+)/$', views.students_update,
         name='students_update'),
+    url(r'^funcionarios/$', views.employees_list, name='employees_list'),
+    url(r'^adicionar-funcionario/$', views.employees_add,
+        name='employees_add'),
+    url(r'^detalhes-funcionario/(?P<pk>[\w_-]+)/$', views.employees_detail,
+        name='employees_detail'),
+    url(r'^editar-funcionario/(?P<pk>[\w_-]+)/$', views.employees_update,
+        name='employees_update'),
 ]

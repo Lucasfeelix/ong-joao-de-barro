@@ -34,6 +34,26 @@
                       <td>{{ donors.name }}</td>
                     </tr>
                     <tr>
+                      <th class="col-md-3 text-justify"> Email </th>
+                      <td>{{ donors.email }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Telefone </th>
+                      <td>{{ donors.phone }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Celular </th>
+                      <td>{{ donors.cellphone }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Bolsa Auxílio </th>
+                      <td>{{ donors.bag_helped }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Valor </th>
+                      <td>{{ donors.value|default:"---" }}</td>
+                    </tr>
+                    <tr>
                       <th class="text-justify"> Endereço </th>
                       <td>{{ donors.address }}</td>
                     </tr>
@@ -56,6 +76,10 @@
                     <tr>
                       <th class="text-justify"> Data </th>
                       <td>{{ donors.created_at|date:"d/m/Y H:i A" }}</td>
+                    </tr>
+                    <tr>
+                      <th class="col-md-3 text-justify"> Observações </th>
+                      <td>{{ donors.comments }}</td>
                     </tr>
                   </tbody>
                 </table>

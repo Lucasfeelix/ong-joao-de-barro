@@ -2,9 +2,9 @@
 
 {% load pagination %}
 
-{% block title %} Lista de Doadores | {{ block.super}} {% endblock title %}
+{% block title %} Lista de Funcionários | {{ block.super}} {% endblock title %}
 
-{% block spacename %} Lista de Doadores {% endblock spacename %}
+{% block spacename %} Lista de Funcionários {% endblock spacename %}
 
 {% block container %}
 <div class="container-fluid">
@@ -13,13 +13,13 @@
       <form class="navbar-form navbar-right" action="." method="get">
         <div class="col-md-12">
           <!-- add -->
-          <a href="{% url 'users:donors_add' %}">
+          <a href="{% url 'users:employees_add' %}">
             <button id="new_customer" type="button" class="btn btn-primary">
               <span class="glyphicon glyphicon-plus"></span> Adicionar
             </button>
           </a>
           <!-- search form -->
-          <form class="navbar-form navbar-left" role="search" action="{% url 'users:donors_list' %}">
+          <form class="navbar-form navbar-left" role="search" action="{% url 'users:employees_list' %}">
   	        <div class="form-group">
 	            <input name="q" type="text" class="form-control" placeholder="Pesquisar..." />
               <button type="submit" class="btn btn-success form-control"><span class="glyphicon glyphicon-search"></span></button>
@@ -28,7 +28,7 @@
           <br><br>
           <!-- Search links-->
           <ul class="list-inline text-right">
-            <li><a href="{% url 'users:donors_list' %}"><span class="fa fa-star status-aprovado"></span> Todos</a></li>
+            <li><a href="{% url 'users:employees_list' %}"><span class="fa fa-star status-aprovado"></span> Todos</a></li>
             <li><a href="?is_active=True" name="frue"><span class="glyphicon glyphicon-ok-sign ok text-success"></span> Ativos </a></li>
             <li><a href="?is_active=False" name="false"><span class="glyphicon glyphicon-ok-sign ok text-danger"></span> Desativados </a></li>
           </ul>
@@ -39,31 +39,35 @@
       <hr/>
     </div>
     <div class="col-md-12">
-      {% if donors %}
+      {% if employees %}
       	<table class="table table-bordered">
       		<thead>
       			<tr>
-      				<th>Doador</th>
+      				<th>Funcionário</th>
               <th>Ativo</th>
+              <th>Data de nascimento</th>
               <th>Email</th>
-              <th>Telefone</th>
+              <th>Bolsa Auxílio</th>
+              <th>Valor</th>
               <th>Celular</th>
               <th>Data</th>
       			</tr>
       		</thead>
       		<tbody>
-            {% for donor in donors %}
+            {% for employee in employees %}
           			<tr>
-                    <td><a href="{{ donor.get_absolute_url }}">{{donor.name}}</a></td>
-                    {% if donor.is_active is True %}
+                    <td><a href="{{ employee.get_absolute_url }}">{{employee.name}} {{employee.last_name}}</a></td>
+                    {% if employee.is_active is True %}
                       <td><p class="glyphicon glyphicon-ok text-success"></p></td>
                     {% else %}
                       <td><p class="glyphicon glyphicon-remove text-danger"></p></td>
                     {% endif %}
-                    <td>{{donor.email}}</td>
-                    <td>{{donor.phone}}</td>
-                    <td>{{donor.cellphone}}</td>
-                    <td>{{donor.created_at|date:"d/m/Y H:i A"}}</td>
+                    <td>{{employee.date_of_birth|date:"d/m/Y"}}</td>
+                    <td>{{employee.email}}</td>
+                    <td>{{employee.bag_helped}}</td>
+                    <td>{{employee.value}}</td>
+                    <td>{{employee.cellphone}}</td>
+                    <td>{{employee.created_at|date:"d/m/Y H:i A"}}</td>
                 </tr>
             {% endfor %}
       		</tbody>
@@ -75,7 +79,7 @@
   </div>
   <hr>
   <div>
-    <h3><b>Total:</b> {{ donors|length }} doadore{{ donors|length|pluralize }}</h3>
+    <h3><b>Total:</b> {{ employees|length }} funcionário{{ employees|length|pluralize }}</h3>
   </div>
   {% pagination request paginator page_obj%}
 </div>

@@ -69,3 +69,6 @@ TIME = ((u'Matutino', u'Matutino'),
         (u'Diurno', u'Diurno'),
         (u'Vespertino', u'Vespertino'),
         (u'Noturno', u'Noturno'))
+
+EMPLOYEES_TYPE = ((u'Colaborador', u'Colaborador'),
+                  (u'Professor', u'Professor'))

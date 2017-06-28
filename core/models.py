@@ -28,7 +28,9 @@ class PersonalInformations(models.Model):
     name = models.CharField('Nome', max_length=50)
     last_name = models.CharField('Sobrenome', max_length=50)
     email = models.EmailField('E-mail', unique=True)
-    date_of_birth = models.DateField('Data de nascimento', auto_now=False)
+    date_of_birth = models.DateField('Data de nascimento', auto_now=False,
+                                     help_text='Inserir data no seguinte\
+                                     formato __/__/____')
     gender = models.CharField('Gênero', choices=GENDER, max_length=14)
     civil_status = models.CharField('Estado civil', choices=CIVIL_STATUS,
                                     max_length=14)
@@ -37,8 +39,8 @@ class PersonalInformations(models.Model):
     occupation = models.CharField('Profissão', max_length=70)
     rg = models.CharField('RG', unique=True, max_length=9)
     cpf = models.CharField('CPF', unique=True, max_length=11)
-    phone = models.CharField('Telefone ', max_length=20, blank=True)
-    cellphone = models.CharField('Celular', max_length=20, blank=True)
+    phone = models.CharField('Telefone ', max_length=10, blank=True)
+    cellphone = models.CharField('Celular', max_length=11, blank=True)
     comments = models.TextField('Observações', blank=True)
 
     class Meta:
